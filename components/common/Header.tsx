@@ -1,33 +1,95 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
 
-export function Header() {
-  return (
-    <header className="py-5 border-b border-gray-700">
-      <div className="container mx-auto px-6">
-        <div className="flex justify-between items-center">
-          {/* Logo */}
-          <div>
-            <h1 className="font-bold">Portfolio</h1>
-          </div>
-          {/* Navigations */}
-          
-          <nav>
-            <ul className="flex items-center gap-5">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About</Link></li>
-              <li><Link href="/projects">Projects</Link></li>
-            </ul>
-          </nav>
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+] as const;
 
-          {/* Buttons */}
-          <div className="flex gap-3 items-center">
-            <ThemeToggle />
-            <Button>Contact</Button>
-          </div>
+export function Header() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
+      {/* Bar: Logo + nav + ThemeToggle + Menu — always on top, solid background */}
+      <div className="relative z-10 container mx-auto flex h-14 items-center justify-between gap-4 bg-background px-4 sm:px-6">
+        <Link href="/" className="font-semibold text-foreground shrink-0">
+          Portfolio
+        </Link>
+
+        <nav className="hidden md:flex items-center gap-2 lg:gap-4">
+          <ul className="flex items-center gap-2 lg:gap-4">
+            {navLinks.map(({ href, label }) => (
+              <li key={href}>
+                <Link href={href} className="rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="flex shrink-0 items-center gap-2">
+          <ThemeToggle />
+          <Button size="sm" className="hidden sm:inline-flex">
+            Contact
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          </Button>
         </div>
       </div>
+
+      {/* Backdrop: only below the bar, dims the page */}
+      {open && (
+        <div
+          className="md:hidden fixed inset-0 top-14 left-0 right-0 bottom-0 z-0 bg-black/50 backdrop-blur-sm"
+          aria-hidden
+          onClick={() => setOpen(false)}
+        />
+      )}
+
+      {/* Menu panel: below the bar, above the backdrop */}
+      {open && (
+        <div className="md:hidden relative z-10 border-t border-border bg-background">
+          <nav className="container mx-auto px-4 py-4">
+            <ul className="flex flex-col gap-1">
+              {navLinks.map(({ href, label }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-md px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+              <li className="mt-2 pt-2 border-t border-border">
+                <Link href="/" onClick={() => setOpen(false)}>
+                  <Button size="sm" className="w-full justify-center">
+                    Contact
+                  </Button>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      )}
     </header>
-  )
+  );
 }

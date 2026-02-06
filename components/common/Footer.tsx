@@ -1,41 +1,89 @@
 import Link from "next/link";
 
+const quickLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+] as const;
+
+const blogLinks = [
+  { href: "/blog", label: "All posts" },
+  { href: "/blog/category/tech", label: "Tech" },
+  { href: "/blog/category/design", label: "Design" },
+] as const;
+
+const contactLinks = [
+  { href: "tel:123123", label: "Phone: 123123" },
+  { href: "mailto:test@gmail.com", label: "Email" },
+  { href: "#", label: "Github" },
+] as const;
+
 export function Footer() {
   return (
-    <footer className="py-5 border-t border-gray-700">
-      <div className="container mx-auto px-6">
-        <div className="flex justify-between">
-          {/* About your site */}
-          <div>
-            <h2>Portfolio</h2>
-            <p>Cebu, City</p>
+    <footer className="w-full border-t border-border bg-muted/30">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Brand */}
+          <div className="space-y-2">
+            <Link href="/" className="font-semibold text-foreground">
+              Portfolio
+            </Link>
+            <p className="text-sm text-muted-foreground">Cebu, City</p>
           </div>
-          {/* Quick Links */}
+
+          {/* Quick links */}
           <div>
-            <ul>
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About</Link></li>
-              <li><Link href="/projects">Projects</Link></li>
+            <h3 className="mb-3 text-sm font-medium text-foreground">Quick links</h3>
+            <ul className="space-y-2">
+              {quickLinks.map(({ href, label }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-          {/* Blogs */}
+
+          {/* Blog */}
           <div>
-            <ul>
-              <li><Link href="/">Blog 1</Link></li>
-              <li><Link href="/about">Blog 2</Link></li>
-              <li><Link href="/projects">Blog 3</Link></li>
+            <h3 className="mb-3 text-sm font-medium text-foreground">Blog</h3>
+            <ul className="space-y-2">
+              {blogLinks.map(({ href, label }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-          {/* Contacts */}
+
+          {/* Contact */}
           <div>
-            <ul>
-              <li><Link href="/">Phone: 123123</Link></li>
-              <li><Link href="/about">Email: test@gmail.com</Link></li>
-              <li><Link href="/projects">Github</Link></li>
+            <h3 className="mb-3 text-sm font-medium text-foreground">Contact</h3>
+            <ul className="space-y-2">
+              {contactLinks.map(({ href, label }) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
