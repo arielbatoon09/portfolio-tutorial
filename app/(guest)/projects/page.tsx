@@ -1,10 +1,8 @@
-import { Button } from "@/components/ui/button";
+
+import { ProjectList } from "@/components/content/projects/ProjectList";
 
 export default function ProjectsPage() {
   return (
-    <div>
-      <h1>Projects</h1>
-      <Button>Button Here</Button>
-    </div>
-  )
+    <ProjectList />
+  );
 }

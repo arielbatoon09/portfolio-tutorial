@@ -22,7 +22,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
       {/* Bar: Logo + nav + ThemeToggle + Menu — always on top, solid background */}
       <div className="relative z-10 container mx-auto flex h-14 items-center justify-between gap-4 bg-background px-4 sm:px-6">
-        <Link href="/" className="font-semibold text-foreground shrink-0">
+        <Link href="/" className="font-bold text-2xl text-foreground shrink-0">
           Portfolio
         </Link>
 
@@ -49,9 +49,11 @@ export function Header() {
 
         <div className="flex shrink-0 items-center gap-2">
           <ThemeToggle />
-          <Button size="sm" className="hidden sm:inline-flex">
-            Contact
-          </Button>
+          <Link href="/contact">
+            <Button size="sm" className="hidden sm:inline-flex">
+              Contact
+            </Button>
+          </Link>
           <Button
             variant="ghost"
             size="icon"
@@ -97,7 +99,7 @@ export function Header() {
                 );
               })}
               <li className="mt-2 pt-2 border-t border-border">
-                <Link href="/" onClick={() => setOpen(false)}>
+                <Link href="/contact" onClick={() => setOpen(false)}>
                   <Button size="sm" className="w-full justify-center">
                     Contact
                   </Button>

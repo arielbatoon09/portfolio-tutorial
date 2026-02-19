@@ -1,10 +1,12 @@
-import { Button } from "@/components/ui/button";
+
+import { AboutHero } from "@/components/content/about/AboutHero";
+import { Experience } from "@/components/content/about/Experience";
 
 export default function AboutPage() {
   return (
-    <div>
-      <h1>About Me</h1>
-      <Button>Button Here</Button>
-    </div>
-  )
+    <>
+      <AboutHero />
+      <Experience />
+    </>
+  );
 }

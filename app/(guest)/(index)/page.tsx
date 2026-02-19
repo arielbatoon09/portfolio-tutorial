@@ -1,10 +1,15 @@
-import { Button } from "@/components/ui/button";
+import { Contact } from "@/components/content/home/Contact";
+import { Hero } from "@/components/content/home/Hero";
+import { Projects } from "@/components/content/home/Projects";
+import { Skills } from "@/components/content/home/Skills";
 
 export default function HomePage() {
   return (
-    <div>
-      <h1>Home Page</h1>
-      <Button>Button Here</Button>
-    </div>
-  )
+    <>
+      <Hero />
+      <Projects />
+      <Skills />
+      <Contact />
+    </>
+  );
 }

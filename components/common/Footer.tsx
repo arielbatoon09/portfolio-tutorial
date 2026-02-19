@@ -23,7 +23,7 @@ export function Footer() {
   return (
     <footer className="w-full border-t border-border bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-10">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-2">
             <Link href="/" className="font-semibold text-foreground">
