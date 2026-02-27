@@ -1,5 +1,6 @@
 import { Header } from "@/components/common/Header";
 import { Footer } from "@/components/common/Footer";
+import { AIChatbot } from "@/components/common/AIChatbot";
 
 export default function GuestLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -9,6 +10,7 @@ export default function GuestLayout({ children }: Readonly<{ children: React.Rea
         {children}
       </div>
       <Footer />
+      <AIChatbot />
     </main>
   );
 }
