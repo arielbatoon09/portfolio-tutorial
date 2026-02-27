@@ -35,7 +35,7 @@ export function Header() {
                   <Link
                     href={href}
                     className={`rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-accent hover:text-accent-foreground ${isActive
-                      ? "bg-accent text-accent-foreground"
+                      ? "bg-accent text-accent-foreground font-medium"
                       : "text-muted-foreground"
                       }`}
                   >

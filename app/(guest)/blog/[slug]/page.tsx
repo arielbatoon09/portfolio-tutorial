@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "@/constants/blog";
-import { BlogPostContent } from "@/components/content/blog/BlogPostContent";
+import { BlogPostContent } from "@/components/features/blog/BlogPostContent";
 
 type Props = { params: Promise<{ slug: string }> };
 

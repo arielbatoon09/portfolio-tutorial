@@ -1,6 +1,6 @@
 
-import { AboutHero } from "@/components/content/about/AboutHero";
-import { Experience } from "@/components/content/about/Experience";
+import { AboutHero } from "@/components/features/about/AboutHero";
+import { Experience } from "@/components/features/about/Experience";
 
 export default function AboutPage() {
   return (

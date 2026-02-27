@@ -1,4 +1,4 @@
-import { BlogLandingContent } from "@/components/content/blog/BlogLandingContent";
+import { BlogLandingContent } from "@/components/features/blog/BlogLandingContent";
 
 export default function BlogLandingPage() {
   return <BlogLandingContent />;

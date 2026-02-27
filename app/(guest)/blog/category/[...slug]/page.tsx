@@ -1,5 +1,5 @@
 import { BLOG_POSTS } from "@/constants/blog";
-import { BlogCategoryContent } from "@/components/content/blog/BlogCategoryContent";
+import { BlogCategoryContent } from "@/components/features/blog/BlogCategoryContent";
 
 type Props = { params: Promise<{ slug: string[] }> };
 
